@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
 		F7DA19711E8F017A00E5EE33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA19701E8F017A00E5EE33 /* main.m */; };
 		F7DA19731E8F017A00E5EE33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DA19721E8F017A00E5EE33 /* Assets.xcassets */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F7DA19691E8F017A00E5EE33 /* XAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DA196C1E8F017A00E5EE33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		F7DA196F1E8F017A00E5EE33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F7A1509A1E9450B100C8A150 /* Main.storyboard */,
 				F7DA19721E8F017A00E5EE33 /* Assets.xcassets */,
 				F7DA19741E8F017B00E5EE33 /* MainMenu.xib */,
 				F7DA19771E8F017B00E5EE33 /* Info.plist */,
@@ -281,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */,
 				F7DA19731E8F017A00E5EE33 /* Assets.xcassets in Resources */,
 				F7DA19761E8F017B00E5EE33 /* MainMenu.xib in Resources */,
 			);
@@ -346,6 +351,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F7A1509A1E9450B100C8A150 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7A1509B1E9450B100C8A150 /* Base */,
+				F7A1509E1E94516600C8A150 /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		F7DA19741E8F017B00E5EE33 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -537,6 +551,7 @@
 				F7DA19921E8F017B00E5EE33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7DA19931E8F017B00E5EE33 /* Build configuration list for PBXNativeTarget "XAssistantTests" */ = {
 			isa = XCConfigurationList;
@@ -545,6 +560,7 @@
 				F7DA19951E8F017B00E5EE33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7DA19961E8F017B00E5EE33 /* Build configuration list for PBXNativeTarget "XAssistantUITests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +569,7 @@
 				F7DA19981E8F017B00E5EE33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
