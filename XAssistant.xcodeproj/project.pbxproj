@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
+		F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A150A01E94619100C8A150 /* PPDragDropView.m */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
 		F7DA19711E8F017A00E5EE33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA19701E8F017A00E5EE33 /* main.m */; };
 		F7DA19731E8F017A00E5EE33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DA19721E8F017A00E5EE33 /* Assets.xcassets */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		F7A1509F1E94619100C8A150 /* PPDragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDragDropView.h; sourceTree = "<group>"; };
+		F7A150A01E94619100C8A150 /* PPDragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDragDropView.m; sourceTree = "<group>"; };
 		F7DA19691E8F017A00E5EE33 /* XAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DA196C1E8F017A00E5EE33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -156,10 +159,10 @@
 		F7DA199A1E8F051C00E5EE33 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F7DA199D1E8F055A00E5EE33 /* XAMainController.h */,
-				F7DA199E1E8F055A00E5EE33 /* XAMainController.m */,
 				F7DA19A01E8F05BC00E5EE33 /* XAWindowController.h */,
 				F7DA19A11E8F05BC00E5EE33 /* XAWindowController.m */,
+				F7DA199D1E8F055A00E5EE33 /* XAMainController.h */,
+				F7DA199E1E8F055A00E5EE33 /* XAMainController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,6 +177,8 @@
 		F7DA199C1E8F051C00E5EE33 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F7A1509F1E94619100C8A150 /* PPDragDropView.h */,
+				F7A150A01E94619100C8A150 /* PPDragDropView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				F7DA199F1E8F055A00E5EE33 /* XAMainController.m in Sources */,
 				F7DA19711E8F017A00E5EE33 /* main.m in Sources */,
 				F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */,
+				F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

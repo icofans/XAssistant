@@ -4,6 +4,7 @@
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -665,10 +666,98 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyy-CB-phb">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="background" id="jh8-eb-TtF"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ur9-t0-MmG">
+                                <rect key="frame" x="125" y="325" width="100" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="打包助手" id="Xds-VJ-QHm">
+                                    <font key="font" metaFont="menuBar"/>
+                                    <color key="textColor" red="0.11764705882352941" green="0.65490196078431373" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7DT-ls-AGN">
+                                <rect key="frame" x="111" y="111" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ukz-g5-4ZP"/>
+                                    <constraint firstAttribute="width" constant="128" id="v7g-UI-eWS"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="placeholder" id="tBZ-Yw-aae"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" alphaValue="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ikM-bi-2Ce">
+                                <rect key="frame" x="110" y="166" width="130" height="18"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="拖拽项目文件夹至此" id="bgz-qY-S3e">
+                                    <font key="font" size="14" name=".PingFangSC-Medium"/>
+                                    <color key="textColor" white="1" alpha="0.9023976293" colorSpace="deviceWhite"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="t8d-4Q-qzv" customClass="PPDragDropView">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="jeA-7N-9dE">
+                                        <rect key="frame" x="297" y="8" width="53" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Zev-hc-Glv"/>
+                                            <constraint firstAttribute="width" constant="53" id="mMH-eL-qV4"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vKM-Dt-xHW">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVL-83-uGO">
+                                        <rect key="frame" x="7" y="13" width="71" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" title="准备就绪" id="79D-7o-Ytz">
+                                            <font key="font" metaFont="systemMedium" size="12"/>
+                                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GVL-83-uGO" firstAttribute="leading" secondItem="t8d-4Q-qzv" secondAttribute="leading" constant="8" id="LpD-D0-lMe"/>
+                                    <constraint firstAttribute="bottom" secondItem="jeA-7N-9dE" secondAttribute="bottom" constant="8" id="fD1-x4-PNr"/>
+                                    <constraint firstItem="jeA-7N-9dE" firstAttribute="centerY" secondItem="GVL-83-uGO" secondAttribute="centerY" id="s7Q-8W-SFV"/>
+                                    <constraint firstAttribute="trailing" secondItem="jeA-7N-9dE" secondAttribute="trailing" id="sOk-JJ-b6Z"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="7DT-ls-AGN" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="2aJ-r3-dDN"/>
+                            <constraint firstItem="ur9-t0-MmG" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="4P0-df-leK"/>
+                            <constraint firstAttribute="bottom" secondItem="Oyy-CB-phb" secondAttribute="bottom" id="6vr-Zc-Fs3"/>
+                            <constraint firstItem="Oyy-CB-phb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Fdd-aa-Pn1"/>
+                            <constraint firstItem="t8d-4Q-qzv" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="IhM-Qi-FHM"/>
+                            <constraint firstItem="t8d-4Q-qzv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Ny9-26-2Gx"/>
+                            <constraint firstAttribute="trailing" secondItem="Oyy-CB-phb" secondAttribute="trailing" id="QQ4-C7-yWf"/>
+                            <constraint firstAttribute="bottom" secondItem="t8d-4Q-qzv" secondAttribute="bottom" id="RHG-jd-vfI"/>
+                            <constraint firstAttribute="trailing" secondItem="t8d-4Q-qzv" secondAttribute="trailing" id="ZX2-hn-X9r"/>
+                            <constraint firstItem="Oyy-CB-phb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="ZoU-xp-ZIF"/>
+                            <constraint firstItem="ikM-bi-2Ce" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="frY-Od-8Yn"/>
+                            <constraint firstItem="ikM-bi-2Ce" firstAttribute="bottom" secondItem="7DT-ls-AGN" secondAttribute="bottom" id="pZQ-Kp-sSY"/>
+                            <constraint firstItem="7DT-ls-AGN" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="pyA-c5-ugn"/>
+                            <constraint firstItem="7DT-ls-AGN" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="uuN-vk-pF4"/>
+                            <constraint firstItem="ur9-t0-MmG" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="wz6-0g-dCJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dragDropView" destination="t8d-4Q-qzv" id="Dh7-Je-MN8"/>
+                        <outlet property="hudTitle" destination="GVL-83-uGO" id="nm8-FN-5YR"/>
+                        <outlet property="placeholderImageView" destination="7DT-ls-AGN" id="ToJ-zG-8ra"/>
+                        <outlet property="placeholderTitle" destination="ikM-bi-2Ce" id="8mF-38-5yh"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="75" y="724"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="350" height="350"/>
+        <image name="placeholder" width="256" height="256"/>
+        <image name="setting" width="128" height="128"/>
+    </resources>
 </document>
