@@ -9,6 +9,12 @@
 #import "XAMainController.h"
 #import "PPDragDropView.h"
 
+typedef NS_OPTIONS(NSUInteger, XAProjectType) {
+    PROJECT_UNKNOWN     = 0, // 未知
+    PROJECT_NORMAL      = 1, // 普通项目
+    PROJECT_WORKSPACE   = 2, // 工作空间类项目
+};
+
 @interface XAMainController ()<PPDragDropViewDelegate>
 
 /** 
@@ -49,13 +55,40 @@
         NSLog(@"------%@",filePath);
         // 1.检查路径是否为文件夹
         if (![self checkIsFolder:filePath]) {
-            self.hudTitle.stringValue = @"拖入的不是文件夹，请重试";
+            self.hudTitle.stringValue = @"拖入的不是文件夹或文件路径不存在，请重试";
             return;
         }
-        // 2.隐藏拖拽提示界面
+        
+        // 2.检查文件夹是否包含xcworkspace或者xcodeproj文件、如果包含，分开处理
+        NSArray *subFileArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:filePath error:nil];
+        
+        XAProjectType projectType = PROJECT_UNKNOWN;
+        for (NSString *subFileName in subFileArray) {
+            // 获取文件完整路径
+            NSString *subFilePath = [NSString stringWithFormat:@"%@/%@", filePath,subFileName];
+            // 判断文件的拓展名
+            NSString *extension = [[subFilePath pathExtension] lowercaseString];
+            if ([extension isEqualToString:@"xcworkspace"]) {
+                projectType = PROJECT_WORKSPACE;
+            } else if ([extension isEqualToString:@"xcodeproj"]) {
+                projectType = PROJECT_NORMAL;
+            }
+        }
+        // 3.根据获取到的文件结构类型处理
+        if (projectType == PROJECT_UNKNOWN) {
+            self.hudTitle.stringValue = @"请拖入项目文件夹再试";
+            return;
+        }
+        
+        // 隐藏拖拽提示界面
         [self setPlaceholderViewHidden:filePathList.count>0];
         
-        // 3.检查文件夹是否包含xcworkspace或者xcodeproj文件、如果包含，分开处理
+        if (projectType == PROJECT_NORMAL) {
+            
+        }
+        if (projectType == PROJECT_WORKSPACE) {
+            
+        }
     }
 }
 
