@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F70141C61E955E9500DBF161 /* XATaskTool.m */; };
+		F70B80A91E95485800BDBBC5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70B80A81E95485800BDBBC5 /* Cocoa.framework */; };
 		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
 		F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A150A01E94619100C8A150 /* PPDragDropView.m */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F70141C51E955E9500DBF161 /* XATaskTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATaskTool.h; sourceTree = "<group>"; };
+		F70141C61E955E9500DBF161 /* XATaskTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATaskTool.m; sourceTree = "<group>"; };
+		F70141C91E955FD200DBF161 /* XAEnumMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XAEnumMacro.h; sourceTree = "<group>"; };
+		F70B80A81E95485800BDBBC5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F7A1509F1E94619100C8A150 /* PPDragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDragDropView.h; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F70B80A91E95485800BDBBC5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +92,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F70141C81E955FB600DBF161 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				F70141C91E955FD200DBF161 /* XAEnumMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		F70B80A71E95485800BDBBC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F70B80A81E95485800BDBBC5 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7A150A21E9478C400C8A150 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				F70141C51E955E9500DBF161 /* XATaskTool.h */,
+				F70141C61E955E9500DBF161 /* XATaskTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		F7DA19601E8F017A00E5EE33 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +124,7 @@
 				F7DA197F1E8F017B00E5EE33 /* XAssistantTests */,
 				F7DA198A1E8F017B00E5EE33 /* XAssistantUITests */,
 				F7DA196A1E8F017A00E5EE33 /* Products */,
+				F70B80A71E95485800BDBBC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +143,7 @@
 			children = (
 				F7DA196C1E8F017A00E5EE33 /* AppDelegate.h */,
 				F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */,
+				F70141C81E955FB600DBF161 /* Macro */,
 				F7DA19991E8F051C00E5EE33 /* Class */,
 				F7DA196F1E8F017A00E5EE33 /* Supporting Files */,
 			);
@@ -149,6 +183,7 @@
 		F7DA19991E8F051C00E5EE33 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				F7A150A21E9478C400C8A150 /* Tool */,
 				F7DA199A1E8F051C00E5EE33 /* Controller */,
 				F7DA199B1E8F051C00E5EE33 /* Model */,
 				F7DA199C1E8F051C00E5EE33 /* View */,
@@ -318,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7DA19A21E8F05BC00E5EE33 /* XAWindowController.m in Sources */,
+				F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */,
 				F7DA199F1E8F055A00E5EE33 /* XAMainController.m in Sources */,
 				F7DA19711E8F017A00E5EE33 /* main.m in Sources */,
 				F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */,

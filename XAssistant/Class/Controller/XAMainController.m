@@ -8,12 +8,7 @@
 
 #import "XAMainController.h"
 #import "PPDragDropView.h"
-
-typedef NS_OPTIONS(NSUInteger, XAProjectType) {
-    PROJECT_UNKNOWN     = 0, // 未知
-    PROJECT_NORMAL      = 1, // 普通项目
-    PROJECT_WORKSPACE   = 2, // 工作空间类项目
-};
+#import "XATaskTool.h"
 
 @interface XAMainController ()<PPDragDropViewDelegate>
 
@@ -63,6 +58,7 @@ typedef NS_OPTIONS(NSUInteger, XAProjectType) {
         NSArray *subFileArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:filePath error:nil];
         
         XAProjectType projectType = PROJECT_UNKNOWN;
+        NSString *projectName = @"";
         for (NSString *subFileName in subFileArray) {
             // 获取文件完整路径
             NSString *subFilePath = [NSString stringWithFormat:@"%@/%@", filePath,subFileName];
@@ -70,8 +66,10 @@ typedef NS_OPTIONS(NSUInteger, XAProjectType) {
             NSString *extension = [[subFilePath pathExtension] lowercaseString];
             if ([extension isEqualToString:@"xcworkspace"]) {
                 projectType = PROJECT_WORKSPACE;
+                projectName = [subFileName componentsSeparatedByString:@"."].firstObject;
             } else if ([extension isEqualToString:@"xcodeproj"]) {
                 projectType = PROJECT_NORMAL;
+                projectName = [subFileName componentsSeparatedByString:@"."].firstObject;
             }
         }
         // 3.根据获取到的文件结构类型处理
@@ -81,16 +79,36 @@ typedef NS_OPTIONS(NSUInteger, XAProjectType) {
         }
         
         // 隐藏拖拽提示界面
-        [self setPlaceholderViewHidden:filePathList.count>0];
+        self.hudTitle.stringValue = @"正在打包";
+        [self setPlaceholderViewHidden:YES];
         
-        if (projectType == PROJECT_NORMAL) {
-            
-        }
-        if (projectType == PROJECT_WORKSPACE) {
-            
-        }
+        
+        // 此部分比较耗时，做成异步
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            typeof(self) __weak copy_self = self;
+            [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_CLEAN completion:^(NSString *outputString) {
+                NSLog(@"----%@",outputString);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    copy_self.hudTitle.stringValue = @"清理完成";
+                });
+            }];
+            [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_BUILD completion:^(NSString *outputString) {
+                NSLog(@"----%@",outputString);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    copy_self.hudTitle.stringValue = @"编译完成";
+                });
+            }];
+            [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_ARCHIVE completion:^(NSString *outputString) {
+                NSLog(@"----%@",outputString);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    copy_self.hudTitle.stringValue = @"打包完成";
+                });
+            }];
+
+        });
     }
 }
+
 
 - (BOOL)checkIsFolder:(NSString *)filePath
 {
@@ -102,7 +120,6 @@ typedef NS_OPTIONS(NSUInteger, XAProjectType) {
 
 #pragma mark - PlacehelderView
 - (void)setPlaceholderViewHidden:(BOOL)hidden {
-    self.hudTitle.stringValue = @"正在检测";
     self.placeholderTitle.hidden = hidden;
     self.placeholderImageView.hidden = hidden;
 }
