@@ -29,6 +29,7 @@
     
     NSArray *arguments;
     NSString *sdk = @"iphoneos";
+    NSString *configuration = @"Release";
     switch (cmdType) {
         case CMD_CLEAN:
         {
@@ -42,14 +43,16 @@
             if (type == PROJECT_WORKSPACE) {
                 // xcodebuild -scheme shemename -workspace xxx.xcworkspace build
                 NSString *workspace = [NSString stringWithFormat:@"%@.xcworkspace",projectName];
-                NSString *output = [NSString stringWithFormat:@"SYMROOT=%@",filePath];
+                NSString *output = [NSString stringWithFormat:@"SYMROOT=%@/build",filePath];
                 arguments = [NSArray arrayWithObjects:@"-scheme",projectName,
                                                       @"-workspace",workspace,
+                                                      @"-configuration",configuration,
                                                       @"build",output,nil];
             } else {
                 
                 // xcodebuld -target targetname build
                 arguments = [NSArray arrayWithObjects:@"-target",projectName,
+                                                      @"-configuration",configuration,
                                                       @"build",nil];
             }
         }
@@ -58,7 +61,7 @@
         {
             // xcrun -sdk iphoneos PackageApplication -v targetname.app所在目录/targetname.app" -o 想要输出的目录/文件名.ipa
             // 获取文件路径
-            NSString *path = [NSString stringWithFormat:@"./build/Release-iphoneos/%@.app",projectName];
+            NSString *path = [NSString stringWithFormat:@"./build/%@-iphoneos/%@.app",configuration,projectName];
             NSString *output = [NSString stringWithFormat:@"%@/%@.ipa",filePath,projectName];
             arguments = [NSArray arrayWithObjects:@"-sdk", sdk,
                                                   @"PackageApplication",
