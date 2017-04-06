@@ -124,6 +124,11 @@
             }];
             [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_OPEN completion:^(NSString *outputString) {
                 NSLog(@"----%@",outputString);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [copy_self setPlaceholderViewHidden:NO];
+                    copy_self.hudTitle.stringValue = @"准备就绪";
+                    copy_self.gifView.hidden = YES;
+                });
             }];
 
         });
