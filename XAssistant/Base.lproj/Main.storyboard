@@ -117,6 +117,25 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6kB-5l-lc3" customClass="XAGifView">
+                                <rect key="frame" x="84" y="101" width="181" height="155"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" alphaValue="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="5Qo-h2-IxJ">
+                                        <rect key="frame" x="25" y="69" width="130" height="18"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="打包完成" id="X2V-M2-LAt">
+                                            <font key="font" size="22" name=".PingFangSC-Medium"/>
+                                            <color key="textColor" red="0.19902289772617449" green="1" blue="0.30964240771812079" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="2fh-9L-fWD"/>
+                                    <constraint firstItem="5Qo-h2-IxJ" firstAttribute="centerX" secondItem="6kB-5l-lc3" secondAttribute="centerX" id="K8a-gz-zcX"/>
+                                    <constraint firstAttribute="width" constant="220" id="MTT-1d-sxQ"/>
+                                    <constraint firstItem="5Qo-h2-IxJ" firstAttribute="centerY" secondItem="6kB-5l-lc3" secondAttribute="centerY" id="lhm-NS-Xwy"/>
+                                </constraints>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="t8d-4Q-qzv" customClass="PPDragDropView">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                 <subviews>
@@ -126,7 +145,7 @@
                                             <constraint firstAttribute="height" constant="25" id="Zev-hc-Glv"/>
                                             <constraint firstAttribute="width" constant="53" id="mMH-eL-qV4"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vKM-Dt-xHW">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vKM-Dt-xHW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -152,7 +171,9 @@
                             <constraint firstItem="7DT-ls-AGN" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="2aJ-r3-dDN"/>
                             <constraint firstItem="ur9-t0-MmG" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="4P0-df-leK"/>
                             <constraint firstAttribute="bottom" secondItem="Oyy-CB-phb" secondAttribute="bottom" id="6vr-Zc-Fs3"/>
+                            <constraint firstItem="6kB-5l-lc3" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="CFc-bT-XEk"/>
                             <constraint firstItem="Oyy-CB-phb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Fdd-aa-Pn1"/>
+                            <constraint firstItem="6kB-5l-lc3" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Ftt-yi-JmK"/>
                             <constraint firstItem="t8d-4Q-qzv" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="IhM-Qi-FHM"/>
                             <constraint firstItem="t8d-4Q-qzv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Ny9-26-2Gx"/>
                             <constraint firstAttribute="trailing" secondItem="Oyy-CB-phb" secondAttribute="trailing" id="QQ4-C7-yWf"/>
@@ -167,7 +188,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="completeTitle" destination="5Qo-h2-IxJ" id="suE-pp-Ejg"/>
                         <outlet property="dragDropView" destination="t8d-4Q-qzv" id="Dh7-Je-MN8"/>
+                        <outlet property="gifView" destination="6kB-5l-lc3" id="ZBH-D0-QkJ"/>
                         <outlet property="hudTitle" destination="GVL-83-uGO" id="nm8-FN-5YR"/>
                         <outlet property="placeholderImageView" destination="7DT-ls-AGN" id="ToJ-zG-8ra"/>
                         <outlet property="placeholderTitle" destination="ikM-bi-2Ce" id="8mF-38-5yh"/>
@@ -180,6 +203,5 @@
     <resources>
         <image name="background" width="350" height="350"/>
         <image name="placeholder" width="256" height="256"/>
-        <image name="setting" width="128" height="128"/>
     </resources>
 </document>

@@ -22,6 +22,8 @@
     NSTask *task = [[NSTask alloc] init];
     if (cmdType == CMD_ARCHIVE) {
         [task setLaunchPath:@"/usr/bin/xcrun"];
+    } else if (cmdType == CMD_OPEN) {
+        [task setLaunchPath: @"/usr/bin/open"];
     } else {
         [task setLaunchPath: @"/usr/bin/xcodebuild"];
     }
@@ -49,7 +51,6 @@
                                                       @"-configuration",configuration,
                                                       @"build",output,nil];
             } else {
-                
                 // xcodebuld -target targetname build
                 arguments = [NSArray arrayWithObjects:@"-target",projectName,
                                                       @"-configuration",configuration,
@@ -61,12 +62,34 @@
         {
             // xcrun -sdk iphoneos PackageApplication -v targetname.app所在目录/targetname.app" -o 想要输出的目录/文件名.ipa
             // 获取文件路径
-            NSString *path = [NSString stringWithFormat:@"./build/%@-iphoneos/%@.app",configuration,projectName];
+            // 关于build product path获取问题。[OSX 应用默认为Release和Debug] [iOS 应用为Release-iphoneos和Debug-iphoneos]
+            // 此处需要检测
+            NSString *targetPath;
+            
+            NSString *path1 = [NSString stringWithFormat:@"%@/build/%@/%@.app",filePath,configuration,projectName];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:path1 isDirectory:nil]) {
+                targetPath = path1;
+            }
+            
+            NSString *path2 = [NSString stringWithFormat:@"%@/build/%@-iphoneos/%@.app",filePath,configuration,projectName];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:path2 isDirectory:nil]) {
+                targetPath = path2;
+            }
+            
+            NSLog(@"app路径---%@",targetPath);
+            
             NSString *output = [NSString stringWithFormat:@"%@/%@.ipa",filePath,projectName];
             arguments = [NSArray arrayWithObjects:@"-sdk", sdk,
                                                   @"PackageApplication",
-                                                  @"-v", path,
+                                                  @"-v", targetPath,
                                                   @"-o", output, nil];
+        }
+            break;
+        case CMD_OPEN:
+        {
+            // xcodebuild -target targetname clean
+            NSString *output = [NSString stringWithFormat:@"%@",filePath];
+            arguments = [NSArray arrayWithObjects:output,nil];
         }
             break;
             

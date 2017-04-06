@@ -1,27 +1,27 @@
 //
-//  GifView.m
-//  GifViewDemo_OC
+//  XAGifView.m
+//  XAssistant
 //
-//  Created by SkyNullCode on 4/19/15.
-//  Copyright (c) 2015 SkyNullCode. All rights reserved.
+//  Created by 王家强 on 17/4/5.
+//  Copyright © 2017年 Apple. All rights reserved.
 //
 
-#import "GifView.h"
+#import "XAGifView.h"
 
-@interface GifView()
+@interface XAGifView ()
 
-@property (nonatomic) NSImage *image;
+@property (nonatomic) NSImage *img;
 @property (nonatomic) NSBitmapImageRep *gifbitmapRep;
 @property (assign) NSInteger currentFrameIdx;
 @property (nonatomic)  NSTimer *giftimer;
 
 @end
 
-@implementation GifView
+@implementation XAGifView
 
-- (void)setImage:(NSImage*)img {
+- (void)setGifImage:(NSImage*)img {
     if (img) {
-        _image = img;
+        _img = img;
         self.gifbitmapRep = nil;
         if (self.giftimer) {
             [self.giftimer invalidate];
@@ -30,7 +30,7 @@
         
         
         // get the image representations, and iterate through them
-        NSArray * reps = [self.image representations];
+        NSArray * reps = [self.img representations];
         for (NSImageRep * rep in reps) {
             // find the bitmap representation
             if ([rep isKindOfClass:[NSBitmapImageRep class]] == YES) {
@@ -55,8 +55,11 @@
                 [[NSRunLoop mainRunLoop] addTimer:self.giftimer forMode:NSRunLoopCommonModes];
             }
         }
-        
-        
+    } else {
+        self.gifbitmapRep = nil;
+        [self.giftimer invalidate];
+        self.giftimer = nil;
+        [self setNeedsDisplay:YES];
     }
 }
 
@@ -72,17 +75,17 @@
         [self.gifbitmapRep setProperty:NSImageCurrentFrame withValue:@(self.currentFrameIdx)];
         
         NSRect drawGifRect;
-        if (self.image.size.width > self.frame.size.width
-            || self.image.size.height > self.frame.size.height) {
+        if (self.img.size.width > self.frame.size.width
+            || self.img.size.height > self.frame.size.height) {
             
-            float hfactor = self.image.size.width / self.frame.size.width;
-            float vfactor = self.image.size.height / self.frame.size.height;
+            float hfactor = self.img.size.width / self.frame.size.width;
+            float vfactor = self.img.size.height / self.frame.size.height;
             float factor = fmax(hfactor, vfactor);
-            float newWidth =  self.image.size.width / factor;
-            float newHeight =  self.image.size.height / factor;
+            float newWidth =  self.img.size.width / factor;
+            float newHeight =  self.img.size.height / factor;
             drawGifRect = NSMakeRect((self.frame.size.width - newWidth) / 2.0,(self.frame.size.height - newHeight) / 2.0, newWidth, newHeight);
         } else {
-            drawGifRect = NSMakeRect((self.frame.size.width - self.image.size.width) / 2.0,(self.frame.size.height - self.image.size.height) / 2.0, self.image.size.width, self.image.size.height);
+            drawGifRect = NSMakeRect((self.frame.size.width - self.img.size.width) / 2.0,(self.frame.size.height - self.img.size.height) / 2.0, self.img.size.width, self.img.size.height);
         }
         
         [self.gifbitmapRep drawInRect:drawGifRect
@@ -100,31 +103,6 @@
     [self setNeedsDisplay:YES];
 }
 
-- (void)setImageURL:(NSString*)url {
-    
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [urlRequest addValue:@"image/*" forHTTPHeaderField:@"Accept"];
-    
-    [NSURLConnection sendAsynchronousRequest:urlRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               if (connectionError) {
-                                   NSLog(@"Error description :%@ ,errorCode = %ld ",connectionError.description,connectionError.code);
-                               } else {
-                                   if (data) {
-                                       NSImage *image = [[NSImage alloc]initWithData:data];
-                                       if (image) {
-                                           [self setImage:image];
-                                       } else {
-                                           NSLog(@"Error:not Image data");
-                                       }
-                                   }
-                                   
-                               }
-                               
-                           }];
-    
-}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -139,6 +117,7 @@
     [self.giftimer invalidate];
     self.giftimer = nil;
 }
+
 
 
 @end

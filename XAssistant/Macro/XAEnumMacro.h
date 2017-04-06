@@ -19,6 +19,7 @@ typedef NS_OPTIONS(NSUInteger, XCommandType) {
     CMD_CLEAN       = 0, // clean
     CMD_BUILD       = 1, // 编译
     CMD_ARCHIVE     = 2, // 打包
+    CMD_OPEN        = 3, // 前往文件路径
 };
 
 #endif /* XAEnumMacro_h */

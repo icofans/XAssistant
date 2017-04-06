@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F70141C61E955E9500DBF161 /* XATaskTool.m */; };
-		F70141D21E9599AA00DBF161 /* GifView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70141D11E9599AA00DBF161 /* GifView.m */; };
 		F70B80A91E95485800BDBBC5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70B80A81E95485800BDBBC5 /* Cocoa.framework */; };
+		F785566F1E95ABFF00F7FC47 /* XAGifView.m in Sources */ = {isa = PBXBuildFile; fileRef = F785566E1E95ABFF00F7FC47 /* XAGifView.m */; };
+		F78556731E95B52E00F7FC47 /* load.gif in Resources */ = {isa = PBXBuildFile; fileRef = F78556721E95B52E00F7FC47 /* load.gif */; };
 		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
 		F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A150A01E94619100C8A150 /* PPDragDropView.m */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
@@ -43,9 +44,10 @@
 		F70141C51E955E9500DBF161 /* XATaskTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATaskTool.h; sourceTree = "<group>"; };
 		F70141C61E955E9500DBF161 /* XATaskTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATaskTool.m; sourceTree = "<group>"; };
 		F70141C91E955FD200DBF161 /* XAEnumMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XAEnumMacro.h; sourceTree = "<group>"; };
-		F70141D01E9599AA00DBF161 /* GifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifView.h; sourceTree = "<group>"; };
-		F70141D11E9599AA00DBF161 /* GifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifView.m; sourceTree = "<group>"; };
 		F70B80A81E95485800BDBBC5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F785566D1E95ABFF00F7FC47 /* XAGifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAGifView.h; sourceTree = "<group>"; };
+		F785566E1E95ABFF00F7FC47 /* XAGifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAGifView.m; sourceTree = "<group>"; };
+		F78556721E95B52E00F7FC47 /* load.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = load.gif; sourceTree = "<group>"; };
 		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F7A1509F1E94619100C8A150 /* PPDragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDragDropView.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		F7DA196F1E8F017A00E5EE33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F78556721E95B52E00F7FC47 /* load.gif */,
 				F7A1509A1E9450B100C8A150 /* Main.storyboard */,
 				F7DA19721E8F017A00E5EE33 /* Assets.xcassets */,
 				F7DA19741E8F017B00E5EE33 /* MainMenu.xib */,
@@ -215,8 +218,8 @@
 		F7DA199C1E8F051C00E5EE33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F70141D01E9599AA00DBF161 /* GifView.h */,
-				F70141D11E9599AA00DBF161 /* GifView.m */,
+				F785566D1E95ABFF00F7FC47 /* XAGifView.h */,
+				F785566E1E95ABFF00F7FC47 /* XAGifView.m */,
 				F7A1509F1E94619100C8A150 /* PPDragDropView.h */,
 				F7A150A01E94619100C8A150 /* PPDragDropView.m */,
 			);
@@ -330,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78556731E95B52E00F7FC47 /* load.gif in Resources */,
 				F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */,
 				F7DA19731E8F017A00E5EE33 /* Assets.xcassets in Resources */,
 				F7DA19761E8F017B00E5EE33 /* MainMenu.xib in Resources */,
@@ -357,13 +361,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F785566F1E95ABFF00F7FC47 /* XAGifView.m in Sources */,
 				F7DA19A21E8F05BC00E5EE33 /* XAWindowController.m in Sources */,
 				F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */,
 				F7DA199F1E8F055A00E5EE33 /* XAMainController.m in Sources */,
 				F7DA19711E8F017A00E5EE33 /* main.m in Sources */,
 				F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */,
 				F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */,
-				F70141D21E9599AA00DBF161 /* GifView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

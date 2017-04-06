@@ -9,6 +9,7 @@
 #import "XAMainController.h"
 #import "PPDragDropView.h"
 #import "XATaskTool.h"
+#import "XAGifView.h"
 
 @interface XAMainController ()<PPDragDropViewDelegate>
 
@@ -17,13 +18,27 @@
  */
 @property (weak) IBOutlet PPDragDropView *dragDropView;
 
+/**
+ 提示图
+ */
 @property (weak) IBOutlet NSImageView *placeholderImageView;
+
+/**
+ 描述
+ */
 @property (weak) IBOutlet NSTextField *placeholderTitle;
 
 /** 
  底部状态
  */
 @property (weak) IBOutlet NSTextField *hudTitle;
+
+/**
+ 加载视图
+ */
+@property (strong) IBOutlet XAGifView *gifView;
+
+@property (strong) IBOutlet NSTextField *completeTitle;
 
 @end
 
@@ -40,6 +55,8 @@
     CGRect frame = window.frame;
     frame.size.width = 350;
     [window setFrame:frame display:YES];
+    
+    self.gifView.hidden = YES;
 }
 
 #pragma mark - PPDragDropViewDelegate 获取文件路径数据源数组
@@ -102,7 +119,11 @@
                 NSLog(@"----%@",outputString);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     copy_self.hudTitle.stringValue = @"打包完成";
+                    [copy_self loadDone];
                 });
+            }];
+            [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_OPEN completion:^(NSString *outputString) {
+                NSLog(@"----%@",outputString);
             }];
 
         });
@@ -110,6 +131,22 @@
 }
 
 
+#pragma mark 加载完成
+- (void)loadDone
+{
+    [self.gifView setGifImage:nil];
+    self.completeTitle.hidden = NO;
+}
+
+#pragma mark 加载动画
+- (void)showAnimation
+{
+    NSImage *image = [NSImage imageNamed:@"load.gif"];
+    [self.gifView setWantsLayer:YES];
+    [self.gifView setGifImage:image];
+}
+
+#pragma mark 检查文件夹
 - (BOOL)checkIsFolder:(NSString *)filePath
 {
     BOOL isFolder = NO;
@@ -117,13 +154,15 @@
     return isFolder;
 }
 
-
 #pragma mark - PlacehelderView
 - (void)setPlaceholderViewHidden:(BOOL)hidden {
     self.placeholderTitle.hidden = hidden;
     self.placeholderImageView.hidden = hidden;
+    
+    self.gifView.hidden = NO;
+    self.completeTitle.hidden = YES;
+    [self showAnimation];
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
