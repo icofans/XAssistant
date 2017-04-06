@@ -105,30 +105,22 @@
             typeof(self) __weak copy_self = self;
             [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_CLEAN completion:^(NSString *outputString) {
                 NSLog(@"----%@",outputString);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    copy_self.hudTitle.stringValue = @"清理完成";
-                });
+                copy_self.hudTitle.stringValue = @"清理完成";
             }];
             [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_BUILD completion:^(NSString *outputString) {
                 NSLog(@"----%@",outputString);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    copy_self.hudTitle.stringValue = @"编译完成";
-                });
+                copy_self.hudTitle.stringValue = @"编译完成";
             }];
             [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_ARCHIVE completion:^(NSString *outputString) {
                 NSLog(@"----%@",outputString);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    copy_self.hudTitle.stringValue = @"打包完成";
-                    [copy_self loadDone];
-                });
+                copy_self.hudTitle.stringValue = @"打包完成";
+                [copy_self loadDone];
             }];
             [XATaskTool executeWithPath:filePath type:projectType name:projectName cmd:CMD_OPEN completion:^(NSString *outputString) {
                 NSLog(@"----%@",outputString);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [copy_self setPlaceholderViewHidden:NO];
-                    copy_self.hudTitle.stringValue = @"准备就绪";
-                    copy_self.gifView.hidden = YES;
-                });
+                [copy_self setPlaceholderViewHidden:NO];
+                copy_self.hudTitle.stringValue = @"准备就绪";
+                copy_self.gifView.hidden = YES;
             }];
 
         });

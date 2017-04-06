@@ -110,7 +110,10 @@
     NSData *data = [file readDataToEndOfFile];
     NSString *resultStr = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
     
-    block(resultStr);
+    // 回调中做UI更新，回到主线程
+    dispatch_async(dispatch_get_main_queue(), ^{
+        block(resultStr);
+    });
 }
 
 
