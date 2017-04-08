@@ -23,6 +23,8 @@
     self.window.titleVisibility = NSWindowTitleHidden;
     // 隐藏最大化按钮
     [self.window standardWindowButton:NSWindowZoomButton].hidden = YES;
+    
+    // [self.window setBackgroundColor:[NSColor redColor]];
 }
 
 @end

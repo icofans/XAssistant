@@ -38,6 +38,9 @@
  */
 @property (strong) IBOutlet XAGifView *gifView;
 
+/**
+  完成后的提示文字
+ */
 @property (strong) IBOutlet NSTextField *completeTitle;
 
 @end
@@ -47,15 +50,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    // 设置拖拽文件代理
-    self.dragDropView.delegate = self;
-    
     // 设置程序窗口初始化宽度
     NSWindow *window = [NSApplication sharedApplication].windows.firstObject;
     CGRect frame = window.frame;
     frame.size.width = 350;
     [window setFrame:frame display:YES];
     
+    // 设置拖拽文件代理
+    self.dragDropView.delegate = self;
+    
+    // 提示动画
     self.gifView.hidden = YES;
 }
 
@@ -99,7 +103,6 @@
         self.hudTitle.stringValue = @"正在打包";
         [self setPlaceholderViewHidden:YES];
         
-        
         // 此部分比较耗时，做成异步
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             typeof(self) __weak copy_self = self;
@@ -126,7 +129,6 @@
         });
     }
 }
-
 
 #pragma mark 加载完成
 - (void)loadDone
@@ -164,8 +166,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    
-
 }
 
 @end
