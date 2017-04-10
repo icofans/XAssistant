@@ -4,7 +4,7 @@
 
 初步计划需要实现的功能如下。
 
-<img src="https://github.com/icofans/XAssistant/blob/master/info.gif" width="40%" height="auto">
+<img src="https://github.com/icofans/XAssistant/blob/master/assist.jpg" width="40%" height="auto">
 
 1.对项目进行iPA打包导出
 
