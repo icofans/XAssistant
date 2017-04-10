@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F70141C61E955E9500DBF161 /* XATaskTool.m */; };
 		F70B80A91E95485800BDBBC5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70B80A81E95485800BDBBC5 /* Cocoa.framework */; };
-		F785566F1E95ABFF00F7FC47 /* XAGifView.m in Sources */ = {isa = PBXBuildFile; fileRef = F785566E1E95ABFF00F7FC47 /* XAGifView.m */; };
-		F78556731E95B52E00F7FC47 /* load.gif in Resources */ = {isa = PBXBuildFile; fileRef = F78556721E95B52E00F7FC47 /* load.gif */; };
+		F75131F01E9A9B9C0034CFE9 /* WAYWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F75131EF1E9A9B9C0034CFE9 /* WAYWindow.m */; };
+		F751320E1E9AB1550034CFE9 /* XAMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751320D1E9AB1550034CFE9 /* XAMainView.m */; };
+		F75132111E9AB8B70034CFE9 /* XALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132101E9AB8B70034CFE9 /* XALabel.m */; };
+		F75132131E9AE1340034CFE9 /* img_load.gif in Resources */ = {isa = PBXBuildFile; fileRef = F75132121E9AE1340034CFE9 /* img_load.gif */; };
+		F75132161E9AF32B0034CFE9 /* CALayer+XAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132151E9AF32B0034CFE9 /* CALayer+XAAnimation.m */; };
+		F75132191E9AFC8B0034CFE9 /* XAFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132181E9AFC8B0034CFE9 /* XAFlag.m */; };
+		F751321C1E9B03BE0034CFE9 /* XAPgyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751321B1E9B03BE0034CFE9 /* XAPgyView.m */; };
+		F75132201E9B03EB0034CFE9 /* XAGifView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751321F1E9B03EB0034CFE9 /* XAGifView.m */; };
+		F75132221E9B03F70034CFE9 /* XADragView.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132211E9B03F70034CFE9 /* XADragView.m */; };
 		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
-		F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A150A01E94619100C8A150 /* PPDragDropView.m */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
 		F7DA19711E8F017A00E5EE33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA19701E8F017A00E5EE33 /* main.m */; };
 		F7DA19731E8F017A00E5EE33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DA19721E8F017A00E5EE33 /* Assets.xcassets */; };
@@ -45,13 +51,25 @@
 		F70141C61E955E9500DBF161 /* XATaskTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATaskTool.m; sourceTree = "<group>"; };
 		F70141C91E955FD200DBF161 /* XAEnumMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XAEnumMacro.h; sourceTree = "<group>"; };
 		F70B80A81E95485800BDBBC5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		F785566D1E95ABFF00F7FC47 /* XAGifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAGifView.h; sourceTree = "<group>"; };
-		F785566E1E95ABFF00F7FC47 /* XAGifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAGifView.m; sourceTree = "<group>"; };
-		F78556721E95B52E00F7FC47 /* load.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = load.gif; sourceTree = "<group>"; };
+		F75131EE1E9A9B9C0034CFE9 /* WAYWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYWindow.h; sourceTree = "<group>"; };
+		F75131EF1E9A9B9C0034CFE9 /* WAYWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYWindow.m; sourceTree = "<group>"; };
+		F751320C1E9AB1550034CFE9 /* XAMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAMainView.h; sourceTree = "<group>"; };
+		F751320D1E9AB1550034CFE9 /* XAMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAMainView.m; sourceTree = "<group>"; };
+		F751320F1E9AB8B70034CFE9 /* XALabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XALabel.h; sourceTree = "<group>"; };
+		F75132101E9AB8B70034CFE9 /* XALabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XALabel.m; sourceTree = "<group>"; };
+		F75132121E9AE1340034CFE9 /* img_load.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = img_load.gif; sourceTree = "<group>"; };
+		F75132141E9AF32B0034CFE9 /* CALayer+XAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XAAnimation.h"; sourceTree = "<group>"; };
+		F75132151E9AF32B0034CFE9 /* CALayer+XAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XAAnimation.m"; sourceTree = "<group>"; };
+		F75132171E9AFC8B0034CFE9 /* XAFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAFlag.h; sourceTree = "<group>"; };
+		F75132181E9AFC8B0034CFE9 /* XAFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAFlag.m; sourceTree = "<group>"; };
+		F751321A1E9B03BE0034CFE9 /* XAPgyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAPgyView.h; sourceTree = "<group>"; };
+		F751321B1E9B03BE0034CFE9 /* XAPgyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAPgyView.m; sourceTree = "<group>"; };
+		F751321D1E9B03EB0034CFE9 /* XADragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XADragView.h; sourceTree = "<group>"; };
+		F751321E1E9B03EB0034CFE9 /* XAGifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAGifView.h; sourceTree = "<group>"; };
+		F751321F1E9B03EB0034CFE9 /* XAGifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAGifView.m; sourceTree = "<group>"; };
+		F75132211E9B03F70034CFE9 /* XADragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XADragView.m; sourceTree = "<group>"; };
 		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		F7A1509F1E94619100C8A150 /* PPDragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDragDropView.h; sourceTree = "<group>"; };
-		F7A150A01E94619100C8A150 /* PPDragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDragDropView.m; sourceTree = "<group>"; };
 		F7DA19691E8F017A00E5EE33 /* XAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DA196C1E8F017A00E5EE33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,6 +134,14 @@
 		F74EDE7C1E984BA5009F9323 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				F751320F1E9AB8B70034CFE9 /* XALabel.h */,
+				F75132101E9AB8B70034CFE9 /* XALabel.m */,
+				F75132171E9AFC8B0034CFE9 /* XAFlag.h */,
+				F75132181E9AFC8B0034CFE9 /* XAFlag.m */,
+				F75131EE1E9A9B9C0034CFE9 /* WAYWindow.h */,
+				F75131EF1E9A9B9C0034CFE9 /* WAYWindow.m */,
+				F75132141E9AF32B0034CFE9 /* CALayer+XAAnimation.h */,
+				F75132151E9AF32B0034CFE9 /* CALayer+XAAnimation.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -125,6 +151,10 @@
 			children = (
 				F70141C51E955E9500DBF161 /* XATaskTool.h */,
 				F70141C61E955E9500DBF161 /* XATaskTool.m */,
+				F751321E1E9B03EB0034CFE9 /* XAGifView.h */,
+				F751321F1E9B03EB0034CFE9 /* XAGifView.m */,
+				F751321D1E9B03EB0034CFE9 /* XADragView.h */,
+				F75132211E9B03F70034CFE9 /* XADragView.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -166,7 +196,7 @@
 		F7DA196F1E8F017A00E5EE33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F78556721E95B52E00F7FC47 /* load.gif */,
+				F75132121E9AE1340034CFE9 /* img_load.gif */,
 				F7A1509A1E9450B100C8A150 /* Main.storyboard */,
 				F7DA19721E8F017A00E5EE33 /* Assets.xcassets */,
 				F7DA19741E8F017B00E5EE33 /* MainMenu.xib */,
@@ -226,10 +256,10 @@
 		F7DA199C1E8F051C00E5EE33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F785566D1E95ABFF00F7FC47 /* XAGifView.h */,
-				F785566E1E95ABFF00F7FC47 /* XAGifView.m */,
-				F7A1509F1E94619100C8A150 /* PPDragDropView.h */,
-				F7A150A01E94619100C8A150 /* PPDragDropView.m */,
+				F751320C1E9AB1550034CFE9 /* XAMainView.h */,
+				F751320D1E9AB1550034CFE9 /* XAMainView.m */,
+				F751321A1E9B03BE0034CFE9 /* XAPgyView.h */,
+				F751321B1E9B03BE0034CFE9 /* XAPgyView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,10 +371,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F78556731E95B52E00F7FC47 /* load.gif in Resources */,
 				F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */,
 				F7DA19731E8F017A00E5EE33 /* Assets.xcassets in Resources */,
 				F7DA19761E8F017B00E5EE33 /* MainMenu.xib in Resources */,
+				F75132131E9AE1340034CFE9 /* img_load.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,13 +399,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F785566F1E95ABFF00F7FC47 /* XAGifView.m in Sources */,
+				F75132161E9AF32B0034CFE9 /* CALayer+XAAnimation.m in Sources */,
+				F75132191E9AFC8B0034CFE9 /* XAFlag.m in Sources */,
 				F7DA19A21E8F05BC00E5EE33 /* XAWindowController.m in Sources */,
 				F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */,
 				F7DA199F1E8F055A00E5EE33 /* XAMainController.m in Sources */,
 				F7DA19711E8F017A00E5EE33 /* main.m in Sources */,
+				F75132221E9B03F70034CFE9 /* XADragView.m in Sources */,
 				F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */,
-				F7A150A11E94619100C8A150 /* PPDragDropView.m in Sources */,
+				F751321C1E9B03BE0034CFE9 /* XAPgyView.m in Sources */,
+				F75132201E9B03EB0034CFE9 /* XAGifView.m in Sources */,
+				F751320E1E9AB1550034CFE9 /* XAMainView.m in Sources */,
+				F75132111E9AB8B70034CFE9 /* XALabel.m in Sources */,
+				F75131F01E9A9B9C0034CFE9 /* WAYWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

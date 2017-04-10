@@ -7,12 +7,17 @@
 //
 
 #import "XAWindowController.h"
+#import "WAYWindow.h"
 
 @interface XAWindowController ()
+
+//@property (weak) IBOutlet WAYWindow *window;
 
 @end
 
 @implementation XAWindowController
+
+//@dynamic window;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -25,6 +30,12 @@
     [self.window standardWindowButton:NSWindowZoomButton].hidden = YES;
     
     // [self.window setBackgroundColor:[NSColor redColor]];
+    
+    [self.window performSelector:@selector(setVibrantLightAppearance)];
+    [self.window performSelector:@selector(setContentViewAppearanceVibrantDark)];
+    
+//    [self.window setVibrantDarkAppearance];
+//    [self.window setContentViewAppearanceVibrantDark];
 }
 
 @end
