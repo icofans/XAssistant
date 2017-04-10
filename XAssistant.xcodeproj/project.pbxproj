@@ -13,12 +13,12 @@
 		F751320E1E9AB1550034CFE9 /* XAMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751320D1E9AB1550034CFE9 /* XAMainView.m */; };
 		F75132111E9AB8B70034CFE9 /* XALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132101E9AB8B70034CFE9 /* XALabel.m */; };
 		F75132131E9AE1340034CFE9 /* img_load.gif in Resources */ = {isa = PBXBuildFile; fileRef = F75132121E9AE1340034CFE9 /* img_load.gif */; };
-		F75132161E9AF32B0034CFE9 /* CALayer+XAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132151E9AF32B0034CFE9 /* CALayer+XAAnimation.m */; };
 		F75132191E9AFC8B0034CFE9 /* XAFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132181E9AFC8B0034CFE9 /* XAFlag.m */; };
 		F751321C1E9B03BE0034CFE9 /* XAPgyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751321B1E9B03BE0034CFE9 /* XAPgyView.m */; };
 		F75132201E9B03EB0034CFE9 /* XAGifView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751321F1E9B03EB0034CFE9 /* XAGifView.m */; };
 		F75132221E9B03F70034CFE9 /* XADragView.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132211E9B03F70034CFE9 /* XADragView.m */; };
-		F77131401E9C3B850035DC9A /* NSImageView+XAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F771313F1E9C3B850035DC9A /* NSImageView+XAAnimation.m */; };
+		F77131461E9C4F1F0035DC9A /* CALayer+XAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77131431E9C4F1F0035DC9A /* CALayer+XAAnimation.m */; };
+		F77131471E9C4F1F0035DC9A /* NSImageView+XAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77131451E9C4F1F0035DC9A /* NSImageView+XAAnimation.m */; };
 		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
 		F7DA19711E8F017A00E5EE33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA19701E8F017A00E5EE33 /* main.m */; };
@@ -59,8 +59,6 @@
 		F751320F1E9AB8B70034CFE9 /* XALabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XALabel.h; sourceTree = "<group>"; };
 		F75132101E9AB8B70034CFE9 /* XALabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XALabel.m; sourceTree = "<group>"; };
 		F75132121E9AE1340034CFE9 /* img_load.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = img_load.gif; sourceTree = "<group>"; };
-		F75132141E9AF32B0034CFE9 /* CALayer+XAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XAAnimation.h"; sourceTree = "<group>"; };
-		F75132151E9AF32B0034CFE9 /* CALayer+XAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XAAnimation.m"; sourceTree = "<group>"; };
 		F75132171E9AFC8B0034CFE9 /* XAFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAFlag.h; sourceTree = "<group>"; };
 		F75132181E9AFC8B0034CFE9 /* XAFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAFlag.m; sourceTree = "<group>"; };
 		F751321A1E9B03BE0034CFE9 /* XAPgyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAPgyView.h; sourceTree = "<group>"; };
@@ -69,8 +67,10 @@
 		F751321E1E9B03EB0034CFE9 /* XAGifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAGifView.h; sourceTree = "<group>"; };
 		F751321F1E9B03EB0034CFE9 /* XAGifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAGifView.m; sourceTree = "<group>"; };
 		F75132211E9B03F70034CFE9 /* XADragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XADragView.m; sourceTree = "<group>"; };
-		F771313E1E9C3B850035DC9A /* NSImageView+XAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImageView+XAAnimation.h"; sourceTree = "<group>"; };
-		F771313F1E9C3B850035DC9A /* NSImageView+XAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImageView+XAAnimation.m"; sourceTree = "<group>"; };
+		F77131421E9C4F1F0035DC9A /* CALayer+XAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XAAnimation.h"; sourceTree = "<group>"; };
+		F77131431E9C4F1F0035DC9A /* CALayer+XAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XAAnimation.m"; sourceTree = "<group>"; };
+		F77131441E9C4F1F0035DC9A /* NSImageView+XAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImageView+XAAnimation.h"; sourceTree = "<group>"; };
+		F77131451E9C4F1F0035DC9A /* NSImageView+XAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImageView+XAAnimation.m"; sourceTree = "<group>"; };
 		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F7DA19691E8F017A00E5EE33 /* XAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,10 +143,19 @@
 				F75132181E9AFC8B0034CFE9 /* XAFlag.m */,
 				F75131EE1E9A9B9C0034CFE9 /* WAYWindow.h */,
 				F75131EF1E9A9B9C0034CFE9 /* WAYWindow.m */,
-				F75132141E9AF32B0034CFE9 /* CALayer+XAAnimation.h */,
-				F75132151E9AF32B0034CFE9 /* CALayer+XAAnimation.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		F77131411E9C4EFC0035DC9A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F77131421E9C4F1F0035DC9A /* CALayer+XAAnimation.h */,
+				F77131431E9C4F1F0035DC9A /* CALayer+XAAnimation.m */,
+				F77131441E9C4F1F0035DC9A /* NSImageView+XAAnimation.h */,
+				F77131451E9C4F1F0035DC9A /* NSImageView+XAAnimation.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		F7A150A21E9478C400C8A150 /* Tool */ = {
@@ -158,8 +167,6 @@
 				F751321F1E9B03EB0034CFE9 /* XAGifView.m */,
 				F751321D1E9B03EB0034CFE9 /* XADragView.h */,
 				F75132211E9B03F70034CFE9 /* XADragView.m */,
-				F771313E1E9C3B850035DC9A /* NSImageView+XAAnimation.h */,
-				F771313F1E9C3B850035DC9A /* NSImageView+XAAnimation.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 			children = (
 				F7DA196C1E8F017A00E5EE33 /* AppDelegate.h */,
 				F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */,
+				F77131411E9C4EFC0035DC9A /* Category */,
 				F74EDE7C1E984BA5009F9323 /* Tool */,
 				F70141C81E955FB600DBF161 /* Macro */,
 				F7DA19991E8F051C00E5EE33 /* Class */,
@@ -404,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75132161E9AF32B0034CFE9 /* CALayer+XAAnimation.m in Sources */,
 				F75132191E9AFC8B0034CFE9 /* XAFlag.m in Sources */,
 				F7DA19A21E8F05BC00E5EE33 /* XAWindowController.m in Sources */,
 				F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */,
@@ -414,10 +421,11 @@
 				F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */,
 				F751321C1E9B03BE0034CFE9 /* XAPgyView.m in Sources */,
 				F75132201E9B03EB0034CFE9 /* XAGifView.m in Sources */,
+				F77131461E9C4F1F0035DC9A /* CALayer+XAAnimation.m in Sources */,
 				F751320E1E9AB1550034CFE9 /* XAMainView.m in Sources */,
 				F75132111E9AB8B70034CFE9 /* XALabel.m in Sources */,
 				F75131F01E9A9B9C0034CFE9 /* WAYWindow.m in Sources */,
-				F77131401E9C3B850035DC9A /* NSImageView+XAAnimation.m in Sources */,
+				F77131471E9C4F1F0035DC9A /* NSImageView+XAAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
