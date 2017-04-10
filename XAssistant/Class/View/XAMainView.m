@@ -12,6 +12,7 @@
 #import "XAGifView.h"
 #import "XALabel.h"
 #import "CALayer+XAAnimation.h"
+#import "NSImageView+XAAnimation.h"
 
 @interface XAMainView ()<XADragViewDelegate>
 
@@ -28,7 +29,7 @@
 @property(nonatomic,strong) XADragView *dragDropView;
 
 /** GIF图 */
-@property(nonatomic,strong) XAGifView *gifView;
+@property(nonatomic,strong) NSImageView *gifView;
 
 /** 底部状态 */
 @property (nonatomic,strong) XALabel *stateLabel;
@@ -97,12 +98,9 @@
     self.hudLabel.textColor = [NSColor whiteColor];
     self.hudLabel.fontSize = 16;
     
-    self.gifView = [[XAGifView alloc] initWithFrame:NSRectFromCGRect(CGRectMake((self.frame.size.width-142)/2, (self.frame.size.height-123)/2+23, 142, 123))];
+    self.gifView = [[NSImageView alloc] initWithFrame:NSRectFromCGRect(CGRectMake((self.frame.size.width-142)/2, (self.frame.size.height-123)/2+23, 142, 123))];
     [self addSubview:self.gifView];
     self.gifView.hidden = YES;
-    [self.gifView setUpdateBlock:^{
-        // 更新文字状态。未添加
-    }];
     
     self.dragDropView = [[XADragView alloc] initWithFrame:self.frame];
     [self addSubview:self.dragDropView];
@@ -160,7 +158,6 @@
     [self.otherBtn1 setAction:@selector(buttonClick:)];
     [self.otherBtn2 setTarget:self];
     [self.otherBtn2 setAction:@selector(buttonClick:)];
-
 }
 
 #pragma mrk 点击事件
@@ -255,19 +252,27 @@
 #pragma mark 加载动画
 - (void)showAnimation
 {
-    NSImage *image = [NSImage imageNamed:@"img_load.gif"];
-    [self.gifView setWantsLayer:YES];
+    NSMutableArray *imageArray = [NSMutableArray array];
+    for (int i = 1; i<9; i++) {
+        NSString *name = [NSString stringWithFormat:@"img_load%d",i];
+        NSImage *image = [NSImage imageNamed:name];
+        [imageArray addObject:image];
+    }
+    NSArray *reverseArr = [[imageArray reverseObjectEnumerator] allObjects];
+    [imageArray addObjectsFromArray:reverseArr];
+    
+    self.gifView.animationImages = imageArray;
     
     [self.layer rippleEffect:^{
         self.imageView.hidden = YES;
-        [self.gifView setGifImage:image];
         self.gifView.hidden = NO;
+        [self.gifView startAnimating];
     }];
 }
 
 - (void)stopAnimation
 {
-    [self.gifView setGifImage:nil];
+    [self.gifView stopAnimating];
     self.gifView.hidden = YES;
 }
 

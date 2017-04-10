@@ -18,6 +18,7 @@
 		F751321C1E9B03BE0034CFE9 /* XAPgyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751321B1E9B03BE0034CFE9 /* XAPgyView.m */; };
 		F75132201E9B03EB0034CFE9 /* XAGifView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751321F1E9B03EB0034CFE9 /* XAGifView.m */; };
 		F75132221E9B03F70034CFE9 /* XADragView.m in Sources */ = {isa = PBXBuildFile; fileRef = F75132211E9B03F70034CFE9 /* XADragView.m */; };
+		F77131401E9C3B850035DC9A /* NSImageView+XAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F771313F1E9C3B850035DC9A /* NSImageView+XAAnimation.m */; };
 		F7A1509C1E9450B100C8A150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A1509A1E9450B100C8A150 /* Main.storyboard */; };
 		F7DA196E1E8F017A00E5EE33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA196D1E8F017A00E5EE33 /* AppDelegate.m */; };
 		F7DA19711E8F017A00E5EE33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DA19701E8F017A00E5EE33 /* main.m */; };
@@ -68,6 +69,8 @@
 		F751321E1E9B03EB0034CFE9 /* XAGifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAGifView.h; sourceTree = "<group>"; };
 		F751321F1E9B03EB0034CFE9 /* XAGifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAGifView.m; sourceTree = "<group>"; };
 		F75132211E9B03F70034CFE9 /* XADragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XADragView.m; sourceTree = "<group>"; };
+		F771313E1E9C3B850035DC9A /* NSImageView+XAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImageView+XAAnimation.h"; sourceTree = "<group>"; };
+		F771313F1E9C3B850035DC9A /* NSImageView+XAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImageView+XAAnimation.m"; sourceTree = "<group>"; };
 		F7A1509B1E9450B100C8A150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A1509E1E94516600C8A150 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F7DA19691E8F017A00E5EE33 /* XAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +158,8 @@
 				F751321F1E9B03EB0034CFE9 /* XAGifView.m */,
 				F751321D1E9B03EB0034CFE9 /* XADragView.h */,
 				F75132211E9B03F70034CFE9 /* XADragView.m */,
+				F771313E1E9C3B850035DC9A /* NSImageView+XAAnimation.h */,
+				F771313F1E9C3B850035DC9A /* NSImageView+XAAnimation.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				F751320E1E9AB1550034CFE9 /* XAMainView.m in Sources */,
 				F75132111E9AB8B70034CFE9 /* XALabel.m in Sources */,
 				F75131F01E9A9B9C0034CFE9 /* WAYWindow.m in Sources */,
+				F77131401E9C3B850035DC9A /* NSImageView+XAAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
