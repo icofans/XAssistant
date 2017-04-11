@@ -248,7 +248,7 @@ static float kWAYWindowDefaultTrafficLightButtonsTopMargin = 0;
 - (void) setContentViewAppearance: (int) material {
 	if (![WAYWindow supportsVibrantAppearances])
 		return;
-	
+    
 	NSVisualEffectView *newContentView = (NSVisualEffectView *)[self replaceSubview:self.contentView withViewOfClass:[NSVisualEffectView class]];
 	[newContentView setMaterial:material];
 	[self setContentView:newContentView];
@@ -343,7 +343,6 @@ static float kWAYWindowDefaultTrafficLightButtonsTopMargin = 0;
 }
 
 #pragma mark - NSWindow Delegate
-
 - (void) windowDidResize:(NSNotification *)notification {
 	[self _setNeedsLayout];
 }
