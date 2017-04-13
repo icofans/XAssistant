@@ -41,27 +41,10 @@
     
 }
 
-
 - (void)creatMainView
 {
     self.mainView = [[XAMainView alloc] initWithFrame:NSRectFromCGRect(CGRectMake(0, 0, 350, 350))];
     [self.view addSubview:self.mainView];
-    
-    typeof(self) __weak copy_self = self;
-    [self.mainView setClickBlock:^{
-        [copy_self topgyView];
-    }];
-}
-
-
-- (void)topgyView
-{
-    self.pgyView = [[XAPgyView alloc] initWithFrame:NSRectFromCGRect(CGRectMake(0, 0, 350, 350))];
-    
-    [self.view.layer rippleEffect:^{
-        self.mainView.hidden = YES;
-        [self.view addSubview:self.pgyView];
-    }];
 }
 
 - (void)viewDidLoad {

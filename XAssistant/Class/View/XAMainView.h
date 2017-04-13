@@ -18,4 +18,5 @@ typedef void(^XAUploadButtonClickBlock)(void);
 @property(nonatomic,copy) XAUploadButtonClickBlock clickBlock;
 
 
+
 @end

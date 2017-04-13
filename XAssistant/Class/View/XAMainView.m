@@ -9,10 +9,10 @@
 #import "XAMainView.h"
 #import "XADragView.h"
 #import "XATaskTool.h"
-#import "XAGifView.h"
 #import "XALabel.h"
 #import "CALayer+XAAnimation.h"
 #import "NSImageView+XAAnimation.h"
+#import "XAPgyView.h"
 
 @interface XAMainView ()<XADragViewDelegate>
 
@@ -51,6 +51,8 @@
 
 /** 蘑菇 */
 @property(nonatomic,strong) NSButton *otherBtn2;
+
+@property(nonatomic,strong) XAPgyView *pgyView;
 
 @end
 
@@ -163,9 +165,23 @@
 #pragma mrk 点击事件
 - (void)buttonClick:(NSButton *)sender
 {
-    if (self.clickBlock) {
-        self.clickBlock();
-    }
+    [self.layer rippleEffect:^{
+        [self.subviews enumerateObjectsUsingBlock:^(__kindof NSView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.hidden = YES;
+        }];
+    }];
+    [self topgyView];
+}
+
+#pragma mark 蒲公英视图
+- (void)topgyView
+{
+    typeof(self) __weak weakSelf = self;
+    [self.layer addAnimationWithType:kCATransitionPush subType:kCATransitionFromBottom animation:^{
+        weakSelf.pgyView = [[XAPgyView alloc] initWithFrame:NSRectFromCGRect(CGRectMake(0, 0, 350, 350))];
+        [weakSelf addSubview:weakSelf.pgyView];
+    }];
+    
 }
 
 - (void)draggingDidEntered:(BOOL)isVisble
@@ -300,8 +316,6 @@
     [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isFolder];
     return isFolder;
 }
-
-
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
