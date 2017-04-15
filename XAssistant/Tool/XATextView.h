@@ -20,5 +20,10 @@
  */
 @property(nonatomic,strong) NSImage *leftImage;
 
+/**
+ text
+ */
+@property(nonatomic,copy) NSString *text;
+
 
 @end

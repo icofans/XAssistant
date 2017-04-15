@@ -9,6 +9,8 @@
 #import "XAPgyView.h"
 #import "XATextView.h"
 #import "XALabel.h"
+#import "XAPgyManager.h"
+#import "MBProgressHUD.h"
 
 @interface XAPgyView ()
 
@@ -68,8 +70,66 @@
     self.loginBtn.layer.cornerRadius = 5;
     self.loginBtn.layer.masksToBounds = YES;
     
+    [self.loginBtn setTarget:self];
+    [self.loginBtn setAction:@selector(buttonClick:)];
+    
 }
 
+#pragma mrk 点击事件
+- (void)buttonClick:(NSButton *)sender
+{
+    // 获取账号密码
+    NSString *account = self.accountTF.text;
+    NSString *pwd = self.passwordTF.text;
+    
+    if (!account.length || !pwd.length) {
+        [self showError:@"请检查输入"];
+    }
+    if (![self validateEmail:account]) {
+        [self showError:@"邮箱地址不正确"];
+    }
+    
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self];
+    [self addSubview:HUD];
+    
+    // Set the hud to display with a color
+    HUD.color = [NSColor colorWithDeviceRed:1 green:1 blue:1 alpha:0.50];
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        NSLog(@"p------%@-------%@",account,pwd);
+        [[XAPgyManager shareInstance] xa_login:account password:pwd completion:^(BOOL success) {
+            
+        }];
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+    }];
+    
+    
+    
+    
+    
+    
+    
+}
+
+- (void)showError:(NSString *)title
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    // Configure for text only and offset down
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"Some message...";
+    hud.margin = 10.f;
+    hud.yOffset = 150.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:3];
+}
+
+
+- (BOOL)validateEmail:(NSString *)email
+{
+    NSString *emailRegex =@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
 
 
 
