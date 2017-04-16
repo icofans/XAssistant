@@ -17,21 +17,35 @@
  */
 @property(nonatomic,assign,getter=isLogin) BOOL login;
 
+/**
+ file
+ */
+@property(nonatomic,copy) NSString *ipaPath;
 
 /**
  file
  */
-@property(nonatomic,strong) NSString *ipaPath;
+@property(nonatomic,copy) NSString *appPath;
 
 /**
  api_key
  */
-@property(nonatomic,strong) NSString *api_key;
+@property(nonatomic,copy) NSString *api_key;
 
 /**
  user_key
  */
-@property(nonatomic,strong) NSString *user_key;
+@property(nonatomic,copy) NSString *user_key;
+
+/**
+ bundleIdentifier
+ */
+@property(nonatomic,copy) NSString *bundleIdentifier;
+
+/**
+ version
+ */
+@property(nonatomic,copy) NSString *version;
 
 
 

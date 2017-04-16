@@ -79,9 +79,10 @@
             
             NSLog(@"app路径---%@",targetPath);
             // 存储iPA路径
-            [XAFlag shareInstance].ipaPath = targetPath;
+            [XAFlag shareInstance].appPath = targetPath;
             
             NSString *output = [NSString stringWithFormat:@"%@/%@.ipa",filePath,projectName];
+            [XAFlag shareInstance].ipaPath = output;
             arguments = [NSArray arrayWithObjects:@"-sdk", sdk,
                                                   @"PackageApplication",
                                                   @"-v", targetPath,

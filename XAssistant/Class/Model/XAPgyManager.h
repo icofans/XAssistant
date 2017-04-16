@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XAAppModel.h"
 
 @interface XAPgyManager : NSObject
 
@@ -14,11 +15,35 @@
 
 + (instancetype)shareInstance;
 
+
+/**
+ 登录到蒲公英
+
+ @param account 账号
+ @param pwd 密码
+ @param block 回调
+ */
 - (void)xa_login:(NSString *)account
        password:(NSString *)pwd
       completion:(void(^)(BOOL success,NSString *result))block;
 
-- (void)xa_uploadIpaCompletion:(void(^)(BOOL isSuccess))block;
 
+/**
+ 上传ipa
+ 
+ @param block 回调
+ */
+- (void)xa_uploadIpa:(void (^)(NSProgress * progross))uploadProgress
+         completion:(void(^)(BOOL isSuccess))block;
+
+
+/**
+ 检测App信息
+
+ @param bundleIdentifier id
+ @param block 回调
+ */
+- (void)xa_checkAppInfo:(NSString *)bundleIdentifier
+            completion:(void(^)(XAAppModel *info))block;
 
 @end

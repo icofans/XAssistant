@@ -134,9 +134,14 @@
     _leftImage = leftImage;
 }
 
-- (NSString *)text
+- (NSString *)textContent
 {
     return self.textField.stringValue;
+}
+
+- (void)setText:(NSString *)text
+{
+    self.textField.stringValue = text;
 }
 
 

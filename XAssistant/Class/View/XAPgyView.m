@@ -12,6 +12,8 @@
 #import "XAPgyManager.h"
 #import "MBProgressHUD.h"
 #import "CALayer+XAAnimation.h"
+#import "NSImageView+XAAnimation.h"
+#import "XAFlag.h"
 
 @interface XAPgyView ()
 
@@ -23,6 +25,18 @@
 @property(nonatomic,strong) XATextView *passwordTF;
 
 @property(nonatomic,strong) NSButton *loginBtn;
+
+
+/** 提示文字 */
+@property(nonatomic,strong) XALabel *hudLabel;
+
+/** GIF图 */
+@property(nonatomic,strong) NSImageView *gifView;
+
+/** 底部状态 */
+@property (nonatomic,strong) XALabel *stateLabel;
+
+@property (nonatomic,strong) NSImageView *completeImageV;
 
 @end
 
@@ -49,6 +63,10 @@
     self.titleLabel.fontName = [NSFont boldSystemFontOfSize:10.0].fontName;
     
     [self creatLoginView];
+    
+    [self creatUploadView];
+    
+    [self creatCompleteView];
 }
 
 - (void)creatLoginView
@@ -70,9 +88,15 @@
     self.loginBtn.image = [NSImage imageNamed:@"img_btn"];
     self.loginBtn.layer.cornerRadius = 5;
     self.loginBtn.layer.masksToBounds = YES;
-    
+
     [self.loginBtn setTarget:self];
     [self.loginBtn setAction:@selector(buttonClick:)];
+    
+    // 获取本地的信息
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
+    NSString *pwd = [[NSUserDefaults standardUserDefaults] objectForKey:@"pwd"];
+    [self.accountTF setText:uid];
+    [self.passwordTF setText:pwd];
     
 }
 
@@ -116,18 +140,98 @@
 
 - (void)toUpload
 {
+    // 获取用户名
+    NSString *uName = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
+    
+    [self showAnimation];
     [self.layer rippleEffect:^{
         self.accountTF.hidden = YES;
         self.passwordTF.hidden = YES;
         self.loginBtn.hidden = YES;
+        self.hudLabel.hidden = NO;
+        [self.gifView startAnimating];
+        self.titleLabel.text = uName;
+    }];
+    
+    typeof(self) __weak weakSelf = self;
+    [[XAPgyManager shareInstance] xa_uploadIpa:^(NSProgress *progross) {
+        long completedUnitCount = progross.completedUnitCount;
+        long totalUnitCount = progross.totalUnitCount;
+        double percent = (completedUnitCount*1.0)/(totalUnitCount/100.0);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.stateLabel.text = [NSString stringWithFormat:@"上传中:%.0f%%",percent];
+        });
+    } completion:^(BOOL isSuccess) {
+        weakSelf.titleLabel.text = @"打包助手";
+        weakSelf.stateLabel.text = @"上传完成";
+        [weakSelf toComplete];
     }];
 }
 
+- (void)toComplete
+{
+    [self.layer rippleEffect:^{
+        self.completeImageV.hidden = NO;
+        [self stopAnimation];
+        self.hudLabel.hidden = YES;
+    }];
+}
 
+#pragma mark 上传视图
+- (void)creatUploadView
+{
+    self.gifView = [[NSImageView alloc] initWithFrame:NSRectFromCGRect(CGRectMake((self.frame.size.width-142)/2, (self.frame.size.height-123)/2+23, 142, 123))];
+    [self addSubview:self.gifView];
+    self.gifView.hidden = YES;
+    
+    NSRect tfRect = NSRectFromCGRect(CGRectMake(0, (self.frame.size.height-130)/2-10, 350, 20));
+    self.hudLabel = [[XALabel alloc] initWithFrame:tfRect];
+    [self addSubview:self.hudLabel];
+    self.hudLabel.textAlignment = XATextAlignmentCenter;
+    self.hudLabel.text = @"上传中";
+    self.hudLabel.textColor = [NSColor whiteColor];
+    self.hudLabel.fontSize = 16;
+    self.hudLabel.hidden = YES;
+    
+    // 进度
+    self.stateLabel = [[XALabel alloc] initWithFrame:NSRectToCGRect(CGRectMake(8, 0, 330, 20))];
+    [self addSubview:self.stateLabel];
+    self.stateLabel.textColor = [NSColor whiteColor];
+    self.stateLabel.fontSize = 13;
+}
 
+#pragma mark 加载动画
+- (void)showAnimation
+{
+    NSMutableArray *imageArray = [NSMutableArray array];
+    for (int i = 1; i<9; i++) {
+        NSString *name = [NSString stringWithFormat:@"img_load%d",i];
+        NSImage *image = [NSImage imageNamed:name];
+        [imageArray addObject:image];
+    }
+    NSArray *reverseArr = [[imageArray reverseObjectEnumerator] allObjects];
+    [imageArray addObjectsFromArray:reverseArr];
+    
+    self.gifView.hidden = NO;
+    self.gifView.animationImages = imageArray;
+}
 
+- (void)stopAnimation
+{
+    [self.gifView stopAnimating];
+    self.gifView.hidden = YES;
+}
 
-
+- (void)creatCompleteView
+{
+    CGFloat imgW = 164;
+    CGRect imgRect = CGRectMake((self.frame.size.width-imgW)/2, (self.frame.size.height-imgW)/2, imgW, imgW);
+    self.completeImageV = [[NSImageView alloc] initWithFrame:NSRectToCGRect(imgRect)];
+    [self addSubview:self.completeImageV];
+    
+    self.completeImageV.image = [NSImage imageNamed:@"img_complete"];
+    self.completeImageV.hidden = YES;
+}
 
 
 - (void)showError:(NSString *)title
@@ -142,14 +246,12 @@
     [hud hide:YES afterDelay:2];
 }
 
-
 - (BOOL)validateEmail:(NSString *)email
 {
     NSString *emailRegex =@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
-
 
 
 - (void)drawRect:(NSRect)dirtyRect {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F70141C71E955E9500DBF161 /* XATaskTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F70141C61E955E9500DBF161 /* XATaskTool.m */; };
 		F70B80A91E95485800BDBBC5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70B80A81E95485800BDBBC5 /* Cocoa.framework */; };
+		F7175B2F1EA3E11700DB1CD6 /* XAAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7175B2E1EA3E11700DB1CD6 /* XAAppView.m */; };
+		F7175B321EA3F39E00DB1CD6 /* XAAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7175B311EA3F39E00DB1CD6 /* XAAppModel.m */; };
 		F73E54061E9EEB6E004691DD /* XATextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E54051E9EEB6E004691DD /* XATextView.m */; };
 		F75131F01E9A9B9C0034CFE9 /* WAYWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F75131EF1E9A9B9C0034CFE9 /* WAYWindow.m */; };
 		F751320E1E9AB1550034CFE9 /* XAMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = F751320D1E9AB1550034CFE9 /* XAMainView.m */; };
@@ -69,6 +71,10 @@
 		F70141C61E955E9500DBF161 /* XATaskTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATaskTool.m; sourceTree = "<group>"; };
 		F70141C91E955FD200DBF161 /* XAEnumMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XAEnumMacro.h; sourceTree = "<group>"; };
 		F70B80A81E95485800BDBBC5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F7175B2D1EA3E11700DB1CD6 /* XAAppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAAppView.h; sourceTree = "<group>"; };
+		F7175B2E1EA3E11700DB1CD6 /* XAAppView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAAppView.m; sourceTree = "<group>"; };
+		F7175B301EA3F39E00DB1CD6 /* XAAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAAppModel.h; sourceTree = "<group>"; };
+		F7175B311EA3F39E00DB1CD6 /* XAAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAAppModel.m; sourceTree = "<group>"; };
 		F73E54041E9EEB6E004691DD /* XATextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATextView.h; sourceTree = "<group>"; };
 		F73E54051E9EEB6E004691DD /* XATextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATextView.m; sourceTree = "<group>"; };
 		F75131EE1E9A9B9C0034CFE9 /* WAYWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYWindow.h; sourceTree = "<group>"; };
@@ -375,6 +381,8 @@
 		F7DA199B1E8F051C00E5EE33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7175B301EA3F39E00DB1CD6 /* XAAppModel.h */,
+				F7175B311EA3F39E00DB1CD6 /* XAAppModel.m */,
 				F79673691EA2C61400E29A46 /* XAPgyManager.h */,
 				F796736A1EA2C61400E29A46 /* XAPgyManager.m */,
 			);
@@ -388,6 +396,8 @@
 				F751320D1E9AB1550034CFE9 /* XAMainView.m */,
 				F751321A1E9B03BE0034CFE9 /* XAPgyView.h */,
 				F751321B1E9B03BE0034CFE9 /* XAPgyView.m */,
+				F7175B2D1EA3E11700DB1CD6 /* XAAppView.h */,
+				F7175B2E1EA3E11700DB1CD6 /* XAAppView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -554,7 +564,9 @@
 				F73E54061E9EEB6E004691DD /* XATextView.m in Sources */,
 				F75132111E9AB8B70034CFE9 /* XALabel.m in Sources */,
 				F75131F01E9A9B9C0034CFE9 /* WAYWindow.m in Sources */,
+				F7175B2F1EA3E11700DB1CD6 /* XAAppView.m in Sources */,
 				F77131471E9C4F1F0035DC9A /* NSImageView+XAAnimation.m in Sources */,
+				F7175B321EA3F39E00DB1CD6 /* XAAppModel.m in Sources */,
 				F7C47A6E1EA3A870009C7DAA /* UIWebView+AFNetworking.m in Sources */,
 				F7C47A671EA3A870009C7DAA /* AFImageDownloader.m in Sources */,
 				F7C47A681EA3A870009C7DAA /* AFNetworkActivityIndicatorManager.m in Sources */,

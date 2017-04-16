@@ -309,6 +309,7 @@
     }];
 }
 
+
 #pragma mark 检查文件夹
 - (BOOL)checkIsFolder:(NSString *)filePath
 {
@@ -316,6 +317,7 @@
     [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isFolder];
     return isFolder;
 }
+
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];

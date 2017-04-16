@@ -25,4 +25,6 @@
                    cmd:(XCommandType)cmdType
             completion:(void(^)(NSString *outputString))block;
 
+
+
 @end

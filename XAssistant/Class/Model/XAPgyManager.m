@@ -8,10 +8,15 @@
 
 #import "XAPgyManager.h"
 #import "AFNetworking.h"
+#import "XAFlag.h"
 
 @interface XAPgyManager ()
 
 @property(nonatomic,strong) AFHTTPSessionManager *afManager;
+
+@property(nonatomic,copy) NSString *api_key;
+
+@property(nonatomic,copy) NSString *user_key;
 
 @end
 
@@ -52,7 +57,7 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if([[dict objectForKey:@"code"] integerValue] == 0) {
             
-            [[NSUserDefaults standardUserDefaults] setObject:account forKey:@"uId"];
+            [[NSUserDefaults standardUserDefaults] setObject:account forKey:@"uid"];
             [[NSUserDefaults standardUserDefaults] setObject:pwd forKey:@"pwd"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
@@ -67,9 +72,68 @@
     }];
 }
 
-- (void)xa_uploadIpaCompletion:(void (^)(BOOL))block
+- (void)xa_uploadIpa:(void (^)(NSProgress *))uploadProgress completion:(void (^)(BOOL))block
 {
     NSString *url = @"https://qiniu-storage.pgyer.com/apiv1/app/upload";
+    
+    NSString *filepath = [XAFlag shareInstance].ipaPath;
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:self.api_key forKey:@"_api_key"];
+    [parameters setObject:self.user_key forKey:@"uKey"];
+    [self.afManager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSData *data = [NSData dataWithContentsOfFile:filepath];
+        [formData appendPartWithFileData:data name:@"file" fileName:@"app.ipa" mimeType:@"ipa"];
+    } progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if ([dict[@"code"] integerValue] == 0) {
+            block(YES);
+        } else  {
+            block(NO);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)xa_checkAppInfo:(NSString *)bundleIdentifier completion:(void (^)(XAAppModel *))block
+{
+    // 获取key
+    NSString *url = @"http://www.pgyer.com/apiv1/user/listMyPublished";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:self.api_key forKey:@"_api_key"];
+    [parameters setObject:self.user_key forKey:@"uKey"];
+    [parameters setObject:@"1" forKey:@"page"];
+    [self.afManager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if ([dict[@"code"] integerValue] == 0) {
+            NSArray *list = dict[@"data"][@"list"];
+            if (list.count) {
+                BOOL isExist = NO;
+                for (NSDictionary *dict in list) {
+                    if (([dict[@"appType"] interval]==1)&&([dict[@"appIdentifier"] isEqualToString:bundleIdentifier])) {
+                        isExist = YES;
+                        XAAppModel *model = [[XAAppModel alloc] init];
+                        model.appIdentifier = dict[@"appIdentifier"];
+                        model.appIcon = [NSString stringWithFormat:@"%@",dict[@"appIcon"]];
+                        model.appName = dict[@"appName"];
+                        block(model);
+                    }
+                }
+                if (!isExist) { block(nil); }
+            } else {
+                block(nil);
+            }
+        } else {
+            block(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    
+    
 }
 
 
@@ -84,6 +148,12 @@
             // 获取_user_key;
             NSString *api_key = [self subStr:dataString start:@"&_api_key=" end:@"&"];
             NSString *user_key = [self subStr:dataString start:@"var uk = '" end:@"'"];
+            
+            self.api_key = api_key;
+            self.user_key = user_key;
+            [[NSUserDefaults standardUserDefaults] setObject:api_key forKey:@"api_key"];
+            [[NSUserDefaults standardUserDefaults] setObject:user_key forKey:@"user_key"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             
             NSLog(@"%@------%@",api_key,user_key);
             block(YES,@"登录成功");
