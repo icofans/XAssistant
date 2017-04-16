@@ -93,11 +93,15 @@
     [self addSubview:HUD];
     
     // Set the hud to display with a color
-    HUD.color = [NSColor colorWithDeviceRed:1 green:1 blue:1 alpha:0.50];
+    typeof(self) __weak weakSelf = self;
     [HUD showAnimated:YES whileExecutingBlock:^{
         NSLog(@"p------%@-------%@",account,pwd);
-        [[XAPgyManager shareInstance] xa_login:account password:pwd completion:^(BOOL success) {
-            
+        [[XAPgyManager shareInstance] xa_login:account password:pwd completion:^(BOOL success, NSString *result) {
+            if (success) {
+                
+            } else {
+                [weakSelf showError:result];
+            }
         }];
     } completionBlock:^{
         [HUD removeFromSuperview];

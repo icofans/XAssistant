@@ -16,7 +16,7 @@
 
 - (void)xa_login:(NSString *)account
        password:(NSString *)pwd
-     completion:(void(^)(BOOL success))block;
+      completion:(void(^)(BOOL success,NSString *result))block;
 
 
 

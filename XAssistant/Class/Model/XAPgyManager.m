@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void)xa_login:(NSString *)account password:(NSString *)pwd completion:(void (^)(BOOL))block
+- (void)xa_login:(NSString *)account password:(NSString *)pwd completion:(void (^)(BOOL, NSString *))block
 {
     NSString *url = @"http://www.pgyer.com/user/login";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -57,11 +57,9 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             // 获取API信息
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self getApi];
-            });
+            [self getApiCompletion:block];
         } else {
-            block(NO);
+            block(NO,@"账号或密码错误，登录失败");
             
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -71,19 +69,23 @@
 }
     
      
-- (void)getApi {
+- (void)getApiCompletion:(void(^)(BOOL success,NSString *))block {
     NSString *url = @"http://www.pgyer.com/doc/api";
     [self.afManager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSString *dataString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        // 获取_user_key;
-        NSString *api_key = [self subStr:dataString start:@"&_api_key=" end:@"&"];
-        NSString *user_key = [self subStr:dataString start:@"var uk = '" end:@"'"];
-        
-        NSLog(@"%@------%@",api_key,user_key);
+        if (dataString) {
+            // 获取_user_key;
+            NSString *api_key = [self subStr:dataString start:@"&_api_key=" end:@"&"];
+            NSString *user_key = [self subStr:dataString start:@"var uk = '" end:@"'"];
+            
+            NSLog(@"%@------%@",api_key,user_key);
+            block(YES,@"登录成功");
+        } else {
+            block(NO,@"登录失败，为获取到Key");
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
     }];
 }
 
