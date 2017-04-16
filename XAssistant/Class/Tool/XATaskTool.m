@@ -7,6 +7,7 @@
 //
 
 #import "XATaskTool.h"
+#import "XAFlag.h"
 
 @interface XATaskTool ()
 
@@ -77,6 +78,8 @@
             }
             
             NSLog(@"app路径---%@",targetPath);
+            // 存储iPA路径
+            [XAFlag shareInstance].ipaPath = targetPath;
             
             NSString *output = [NSString stringWithFormat:@"%@/%@.ipa",filePath,projectName];
             arguments = [NSArray arrayWithObjects:@"-sdk", sdk,

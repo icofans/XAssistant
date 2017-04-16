@@ -11,6 +11,7 @@
 #import "XALabel.h"
 #import "XAPgyManager.h"
 #import "MBProgressHUD.h"
+#import "CALayer+XAAnimation.h"
 
 @interface XAPgyView ()
 
@@ -82,12 +83,16 @@
     NSString *account = self.accountTF.text;
     NSString *pwd = self.passwordTF.text;
     
-    if (!account.length || !pwd.length) {
-        [self showError:@"请检查输入"];
+    if (!account.length) {
+        [self showError:@"请输入帐号"];
+        return;
+    } else if (!pwd.length) {
+        [self showError:@"请输入密码"];
+        return;
     }
     if (![self validateEmail:account]) {
         [self showError:@"邮箱地址不正确"];
-    }
+        return; }
     
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self];
     [self addSubview:HUD];
@@ -98,33 +103,43 @@
         NSLog(@"p------%@-------%@",account,pwd);
         [[XAPgyManager shareInstance] xa_login:account password:pwd completion:^(BOOL success, NSString *result) {
             if (success) {
-            
+                // 登录成功 上传
+                [weakSelf toUpload];
             } else {
                 [weakSelf showError:result];
             }
         }];
     } completionBlock:^{
         [HUD removeFromSuperview];
-    }];
-    
-    
-    
-    
-    
-    
-    
+    }];   
 }
+
+- (void)toUpload
+{
+    [self.layer rippleEffect:^{
+        self.accountTF.hidden = YES;
+        self.passwordTF.hidden = YES;
+        self.loginBtn.hidden = YES;
+    }];
+}
+
+
+
+
+
+
+
 
 - (void)showError:(NSString *)title
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
     // Configure for text only and offset down
     hud.mode = MBProgressHUDModeText;
-    hud.labelText = @"Some message...";
+    hud.labelText = title;
     hud.margin = 10.f;
     hud.yOffset = 150.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:3];
+    [hud hide:YES afterDelay:2];
 }
 
 

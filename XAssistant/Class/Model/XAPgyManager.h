@@ -18,6 +18,7 @@
        password:(NSString *)pwd
       completion:(void(^)(BOOL success,NSString *result))block;
 
+- (void)xa_uploadIpaCompletion:(void(^)(BOOL isSuccess))block;
 
 
 @end

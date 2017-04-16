@@ -10,14 +10,29 @@
 
 @interface XAFlag : NSObject
 
++ (instancetype)shareInstance;
+
 /**
   登录标识
  */
 @property(nonatomic,assign,getter=isLogin) BOOL login;
 
+
 /**
- token
+ file
  */
-@property(nonatomic,strong) NSString *accessToken;
+@property(nonatomic,strong) NSString *ipaPath;
+
+/**
+ api_key
+ */
+@property(nonatomic,strong) NSString *api_key;
+
+/**
+ user_key
+ */
+@property(nonatomic,strong) NSString *user_key;
+
+
 
 @end

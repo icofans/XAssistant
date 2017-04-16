@@ -65,8 +65,14 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
-    
 }
+
+- (void)xa_uploadIpaCompletion:(void (^)(BOOL))block
+{
+    NSString *url = @"https://qiniu-storage.pgyer.com/apiv1/app/upload";
+}
+
+
     
      
 - (void)getApiCompletion:(void(^)(BOOL success,NSString *))block {
