@@ -98,7 +98,7 @@
         NSLog(@"p------%@-------%@",account,pwd);
         [[XAPgyManager shareInstance] xa_login:account password:pwd completion:^(BOOL success, NSString *result) {
             if (success) {
-                
+            
             } else {
                 [weakSelf showError:result];
             }
