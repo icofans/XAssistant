@@ -163,9 +163,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.stateLabel.text = [NSString stringWithFormat:@"上传中:%.0f%%",percent];
         });
-    } completion:^(BOOL isSuccess) {
+    } completion:^(BOOL isSuccess,NSString *str) {
         weakSelf.titleLabel.text = @"打包助手";
-        weakSelf.stateLabel.text = @"上传完成";
+        weakSelf.stateLabel.text = [NSString stringWithFormat:@"上传完成:%@",str];
         [weakSelf toComplete];
     }];
 }

@@ -18,6 +18,8 @@
 
 @property(nonatomic,copy) NSString *user_key;
 
+@property(nonatomic,copy) NSString *app_key;
+
 @end
 
 @implementation XAPgyManager
@@ -72,7 +74,7 @@
     }];
 }
 
-- (void)xa_uploadIpa:(void (^)(NSProgress *))uploadProgress completion:(void (^)(BOOL))block
+- (void)xa_uploadIpa:(void (^)(NSProgress *))uploadProgress completion:(void (^)(BOOL,NSString *))block
 {
     NSString *url = @"https://qiniu-storage.pgyer.com/apiv1/app/upload";
     
@@ -87,9 +89,13 @@
         
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if ([dict[@"code"] integerValue] == 0) {
-            block(YES);
+            NSString *appkey = dict[@"data"][@"appKey"];
+            self.app_key = appkey;
+            [self getAppinfoCompletion:^(NSString *str) {
+                block(YES,str);
+            }];
         } else  {
-            block(NO);
+            block(NO,nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -136,8 +142,25 @@
     
 }
 
-
-    
+- (void)getAppinfoCompletion:(void(^)(NSString *))block
+{
+    NSString *url = @"";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:self.api_key forKey:@"_api_key"];
+    [parameters setObject:self.user_key forKey:@"uKey"];
+    [parameters setObject:self.app_key forKey:@"aKey"];
+    [self.afManager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if ([dict[@"code"] integerValue] == 0) {
+            NSString *shortUrl = dict[@"data"][@"appShortcutUrl"];
+            block([NSString stringWithFormat:@"https://wwww.pgyer.com/%@",shortUrl]);
+        } else {
+            block(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
      
 - (void)getApiCompletion:(void(^)(BOOL success,NSString *))block {
     NSString *url = @"http://www.pgyer.com/doc/api";

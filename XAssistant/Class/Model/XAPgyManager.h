@@ -34,7 +34,7 @@
  @param block 回调
  */
 - (void)xa_uploadIpa:(void (^)(NSProgress * progross))uploadProgress
-         completion:(void(^)(BOOL isSuccess))block;
+         completion:(void(^)(BOOL isSuccess,NSString *url))block;
 
 
 /**
