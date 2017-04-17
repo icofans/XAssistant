@@ -144,7 +144,7 @@
 
 - (void)getAppinfoCompletion:(void(^)(NSString *))block
 {
-    NSString *url = @"";
+    NSString *url = @"http://www.pgyer.com/apiv1/app/view";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:self.api_key forKey:@"_api_key"];
     [parameters setObject:self.user_key forKey:@"uKey"];
