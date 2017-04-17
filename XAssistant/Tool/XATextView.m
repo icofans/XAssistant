@@ -190,6 +190,7 @@
 {
     if (placeholderString) {
         self.textField.placeholderString = placeholderString;
+        self.secureTextField.placeholderString = placeholderString;
     }
     _placeholderString = placeholderString;
 }

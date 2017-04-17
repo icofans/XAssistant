@@ -96,8 +96,10 @@
     // 获取本地的信息
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
     NSString *pwd = [[NSUserDefaults standardUserDefaults] objectForKey:@"pwd"];
-    [self.accountTF setText:uid];
-    [self.passwordTF setText:pwd];
+    if (uid && pwd) {
+        [self.accountTF setText:uid];
+        [self.passwordTF setText:pwd];
+    }
     
 }
 
