@@ -25,5 +25,10 @@
  */
 @property(nonatomic,copy) NSString *text;
 
+/**
+ 密码
+ */
+@property(nonatomic,assign) BOOL secureTextEntry;
+
 
 @end

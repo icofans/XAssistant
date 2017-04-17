@@ -80,6 +80,7 @@
     [self addSubview:self.passwordTF];
     self.passwordTF.placeholderString = @"请输入密码";
     self.passwordTF.leftImage = [NSImage imageNamed:@"img_password"];
+    self.passwordTF.secureTextEntry = YES;
     
     self.loginBtn = [[NSButton alloc] initWithFrame:NSRectFromCGRect(CGRectMake(50, 90, self.frame.size.width-100, 40))];
     [self addSubview:self.loginBtn];
@@ -121,6 +122,7 @@
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self];
     [self addSubview:HUD];
     
+    HUD.color = [NSColor colorWithDeviceRed:0.1 green:0.1 blue:0.1 alpha:0.90];
     // Set the hud to display with a color
     typeof(self) __weak weakSelf = self;
     [HUD showAnimated:YES whileExecutingBlock:^{
